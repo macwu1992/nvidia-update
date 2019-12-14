@@ -196,6 +196,8 @@ function update() {
 
 		PKG_PATH="$(temp_pkg_path)"
 
+		printf "$PKG_PATH"
+
 		sudo pkgutil --flatten "$EXPANDED_DIR" "$PKG_PATH"
 		sudo chown "$(id -un):$(id -gn)" "$PKG_PATH"
 
@@ -214,7 +216,7 @@ function update() {
 
 	printf "\nInstalling new drivers...\n"
 	sudo installer -pkg "$PKG_PATH" -allowUntrusted -target /
-	rm "$PKG_PATH"
+	printf "$PKG_PATH"
 
 	printf "\nDone.\nPlease restart your system.\n"
 }
